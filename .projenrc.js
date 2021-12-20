@@ -1,4 +1,9 @@
-const { awscdk, DevEnvironmentDockerImage, Gitpod } = require('projen');
+const {
+  awscdk,
+  Gitpod,
+  DevEnvironmentDockerImage,
+  JsonFile,
+} = require('projen');
 
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
@@ -6,7 +11,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Chris Yang',
   authorAddress: 'kimisme9386@gmail.com',
   cdkVersion: '2.1.0',
+  majorVersion: 2,
   defaultReleaseBranch: 'main',
+  releaseBranches: {
+    cdkv1: { npmDistTag: 'cdkv1', majorVersion: 1 },
+  },
+  workflowNodeVersion: '14.17.0',
   name: 'cdk-lambda-alias-retention',
   repositoryUrl: 'https://github.com/kimisme9386/cdk-lambda-alias-retention.git',
   keywords: [
@@ -14,17 +24,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'alias',
     'retention',
   ],
-  /**
-   * we default release the main branch(cdkv2) with major version 2.
-   */
-  majorVersion: 2,
-  defaultReleaseBranch: 'main',
-  /**
-    * we also release the cdkv1 branch with major version 1.
-    */
-  releaseBranches: {
-    cdkv1: { npmDistTag: 'cdkv1', majorVersion: 1 },
-  },
   depsUpgradeOptions: {
     ignoreProjen: false,
     workflowOptions: {
@@ -36,7 +35,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['kimisme9386-bot'],
   },
-  defaultReleaseBranch: 'main',
   catalog: {
     twitter: 'ChrisYang9386',
     announce: false,
@@ -48,10 +46,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
 });
 
-project.package.addField('resolutions', {
-  'pac-resolver': '^5.0.0',
-  'set-value': '^4.0.1',
-  'ansi-regex': '^5.0.1',
+new JsonFile(project, 'cdk.json', {
+  obj: {
+    app: 'npx ts-node --prefer-ts-exts src/integ.default.ts',
+  },
 });
 
 const gitpodPrebuild = project.addTask('gitpod:prebuild', {
