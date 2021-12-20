@@ -9,7 +9,7 @@ import {
 } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
-interface LambdaAliasRetentionProps {
+export interface LambdaAliasRetentionProps {
   fn: lambda.Function;
   lambdaAlias: string;
 }
@@ -43,6 +43,9 @@ export class LambdaAliasRetention extends Construct {
         alias: props.lambdaAlias,
       },
     });
+
+    onEvent.node.addDependency(props.fn);
+    outputs.node.addDependency(props.fn);
 
     console.log(outputs.getAttString('data'));
     console.log(util.inspect(outputs, { showHidden: false, depth: null, colors: true }));

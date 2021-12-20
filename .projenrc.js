@@ -89,8 +89,9 @@ gitpod.addVscodeExtensions(
   'AmazonWebServices.aws-toolkit-vscode',
 );
 
-const common_exclude = ['cdk.out', 'cdk.context.json', 'yarn-error.log'];
-project.npmignore.exclude(...common_exclude);
-project.gitignore.exclude(...common_exclude);
+const git_common_exclude = ['cdk.out', 'cdk.context.json', 'yarn-error.log'];
+const npm_common_exclude = ['cdk.out', 'cdk.context.json', 'yarn-error.log', 'lambda'];
+project.npmignore.exclude(...npm_common_exclude);
+project.gitignore.exclude(...git_common_exclude);
 
 project.synth();
