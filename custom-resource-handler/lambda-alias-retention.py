@@ -23,15 +23,18 @@ def on_create(event):
     alias = props.get("alias")
     version = props.get("version")
     
-    client = boto3.client('lambda', region_name=region_name)
-    response = client.create_alias(
-        FunctionName=function_name,
-        Name=alias,
-        FunctionVersion=version,
-        Description=alias
-    )
-    print(f"debug response:{json.dumps(response, indent=2)}")
-    output = {"aliasArn": response['AliasArn'], "FunctionVersion": response['FunctionVersion']}
+    output = {}
+    if alias:
+        client = boto3.client('lambda', region_name=region_name)
+        response = client.create_alias(
+            FunctionName=function_name,
+            Name=alias,
+            FunctionVersion=version,
+            Description=alias
+        )
+        print(f"debug response:{json.dumps(response, indent=2)}")
+        output = {"aliasArn": response['AliasArn'], "FunctionVersion": response['FunctionVersion']}
+        
     return {"Data": output}
 
 def on_update(event):
@@ -43,15 +46,18 @@ def on_update(event):
     alias = props.get("alias")
     version = props.get("version")
     
-    client = boto3.client('lambda', region_name=region_name)
-    response = client.create_alias(
-        FunctionName=function_name,
-        Name=alias,
-        FunctionVersion=version,
-        Description=alias
-    )
-    print(f"debug response:{json.dumps(response, indent=2)}")
-    output = {"aliasArn": response['AliasArn'], "FunctionVersion": response['FunctionVersion']} 
+    output = {}
+    if alias:
+        client = boto3.client('lambda', region_name=region_name)
+        response = client.create_alias(
+            FunctionName=function_name,
+            Name=alias,
+            FunctionVersion=version,
+            Description=alias
+        )
+        print(f"debug response:{json.dumps(response, indent=2)}")
+        output = {"aliasArn": response['AliasArn'], "FunctionVersion": response['FunctionVersion']} 
+        
     return {"PhysicalResourceId": physical_id, "Data": output}
 
 def on_delete(event):
