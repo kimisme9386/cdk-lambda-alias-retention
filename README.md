@@ -28,6 +28,25 @@ In general, the lambda code will be iterated continuously and the alias will be 
 
 AWS CDK don't support to retain old alias now and it support to retain old version only.
 
+## Support CDKv1 and CDKv2
+
+#### CDKv2
+
+```
+npm install cdk-lambda-alias-retention
+or
+npm install cdk-lambda-alias-retention@latest
+or
+npm install cdk-lambda-alias-retention@^2.0.0
+```
+
+
+#### CDKv1
+
+```
+npm install cdk-lambda-alias-retention@cdkv1 
+or
+npm install cdk-lambda-alias-retention@^1.0.0
 
 ## Usage 
 
