@@ -6,8 +6,8 @@ import * as cdk from '@aws-cdk/core';
 import * as cr from '@aws-cdk/custom-resources';
 
 export interface LambdaAliasRetentionProps {
-  fn: lambda.Function;
-  lambdaAlias: string;
+  readonly fn: lambda.Function;
+  readonly lambdaAlias: string;
 }
 
 export class LambdaAliasRetention extends cdk.Construct {
