@@ -1,3 +1,7 @@
+[![NPM version](https://badge.fury.io/js/cdk-lambda-alias-retention.svg)](https://badge.fury.io/js/cdk-lambda-alias-retention)
+[![PyPI version](https://badge.fury.io/py/cdk-lambda-alias-retention.svg)](https://badge.fury.io/py/cdk-lambda-alias-retention)
+[![Release](https://github.com/kimisme9386/cdk-lambda-alias-retention/actions/workflows/release.yml/badge.svg)](https://github.com/kimisme9386/cdk-lambda-alias-retention/actions/workflows/release.yml)
+
 # cdk-lambda-alias-retention
 
 Create lambda alias and retain it forever.
