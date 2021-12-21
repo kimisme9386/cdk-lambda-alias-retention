@@ -46,8 +46,5 @@ export class LambdaAliasRetention extends Construct {
 
     onEvent.node.addDependency(props.fn);
     outputs.node.addDependency(props.fn);
-
-    console.log(outputs.getAttString('data'));
-    console.log(util.inspect(outputs, { showHidden: false, depth: null, colors: true }));
   }
 }
