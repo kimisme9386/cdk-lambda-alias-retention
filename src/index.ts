@@ -1,5 +1,4 @@
 import * as path from 'path';
-import * as util from 'util';
 import {
   Stack, CustomResource,
   aws_iam as iam,
@@ -10,8 +9,8 @@ import {
 import { Construct } from 'constructs';
 
 export interface LambdaAliasRetentionProps {
-  fn: lambda.Function;
-  lambdaAlias: string;
+  readonly fn: lambda.Function;
+  readonly lambdaAlias: string;
 }
 
 export class LambdaAliasRetention extends Construct {
