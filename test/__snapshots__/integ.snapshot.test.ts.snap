@@ -1,0 +1,549 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integ snapshot validation 1`] = `
+Object {
+  "Parameters": Object {
+    "AssetParametersaa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0ArtifactHash638AE735": Object {
+      "Description": "Artifact hash for asset \\"aa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0\\"",
+      "Type": "String",
+    },
+    "AssetParametersaa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0S3Bucket12CAA5CB": Object {
+      "Description": "S3 bucket for asset \\"aa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0\\"",
+      "Type": "String",
+    },
+    "AssetParametersaa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0S3VersionKey837DCBA2": Object {
+      "Description": "S3 key for asset version \\"aa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0\\"",
+      "Type": "String",
+    },
+    "AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5ArtifactHashE9AE13B7": Object {
+      "Description": "Artifact hash for asset \\"c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5\\"",
+      "Type": "String",
+    },
+    "AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69": Object {
+      "Description": "S3 bucket for asset \\"c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5\\"",
+      "Type": "String",
+    },
+    "AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0": Object {
+      "Description": "S3 key for asset version \\"c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
+      "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43": Object {
+      "Description": "S3 bucket for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7": Object {
+      "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": Object {
+      "DependsOn": Array [
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "logs:PutRetentionPolicy",
+                "logs:DeleteRetentionPolicy",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "Roles": Array [
+          Object {
+            "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "TestLambda2F70C45E": Object {
+      "DependsOn": Array [
+        "TestLambdaServiceRoleC28C2D9C",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "ImageUri": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Ref": "AWS::AccountId",
+                },
+                ".dkr.ecr.",
+                Object {
+                  "Ref": "AWS::Region",
+                },
+                ".",
+                Object {
+                  "Ref": "AWS::URLSuffix",
+                },
+                "/aws-cdk/assets:0593bfd76b69d581bd16d705a62db18dcc4f3dfe76ec44e8ff007c8098d31e07",
+              ],
+            ],
+          },
+        },
+        "PackageType": "Image",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "TestLambdaServiceRoleC28C2D9C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "TestLambdaAliasRetentionLambdaAliasB3BFAEE0": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "TestLambdaCurrentVersion6F92F24Cd305bd65eddb513d933bd6924b16f128",
+        "TestLambda2F70C45E",
+        "TestLambdaServiceRoleC28C2D9C",
+      ],
+      "Properties": Object {
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEvent6CD40AAC",
+            "Arn",
+          ],
+        },
+        "alias": "v2",
+        "functionName": Object {
+          "Ref": "TestLambda2F70C45E",
+        },
+        "regionName": Object {
+          "Ref": "AWS::Region",
+        },
+        "version": Object {
+          "Fn::GetAtt": Array [
+            "TestLambdaCurrentVersion6F92F24Cd305bd65eddb513d933bd6924b16f128",
+            "Version",
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEvent6CD40AAC": Object {
+      "DependsOn": Array [
+        "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEventServiceRoleDefaultPolicyD3EED770",
+        "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEventServiceRoleA0351AF5",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Description": "AWS CDK resource provider framework - onEvent (TestStackCreateLambda/TestLambdaAliasRetention/LambdaAliasProvider)",
+        "Environment": Object {
+          "Variables": Object {
+            "USER_ON_EVENT_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "TestLambdaAliasRetentionMyHandler7227C930",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.onEvent",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEventServiceRoleA0351AF5",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEventLogRetention05A02F8E": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEvent6CD40AAC",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 1,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEventServiceRoleA0351AF5": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEventServiceRoleDefaultPolicyD3EED770": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "TestLambdaAliasRetentionMyHandler7227C930",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEventServiceRoleDefaultPolicyD3EED770",
+        "Roles": Array [
+          Object {
+            "Ref": "TestLambdaAliasRetentionLambdaAliasProviderframeworkonEventServiceRoleA0351AF5",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "TestLambdaAliasRetentionMyHandler7227C930": Object {
+      "DependsOn": Array [
+        "TestLambdaCurrentVersion6F92F24Cd305bd65eddb513d933bd6924b16f128",
+        "TestLambda2F70C45E",
+        "TestLambdaServiceRoleC28C2D9C",
+        "TestLambdaAliasRetentionMyHandlerServiceRoleDefaultPolicy275901A8",
+        "TestLambdaAliasRetentionMyHandlerServiceRole70BC6D31",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersaa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0S3Bucket12CAA5CB",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersaa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0S3VersionKey837DCBA2",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersaa42730cdeb6a16f5285fd4a6cd858ca44e526e229ed1e264fe77143176267a0S3VersionKey837DCBA2",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Handler": "lambda-alias-retention.on_event",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "TestLambdaAliasRetentionMyHandlerServiceRole70BC6D31",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.8",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "TestLambdaAliasRetentionMyHandlerServiceRole70BC6D31": Object {
+      "DependsOn": Array [
+        "TestLambdaCurrentVersion6F92F24Cd305bd65eddb513d933bd6924b16f128",
+        "TestLambda2F70C45E",
+        "TestLambdaServiceRoleC28C2D9C",
+      ],
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "TestLambdaAliasRetentionMyHandlerServiceRoleDefaultPolicy275901A8": Object {
+      "DependsOn": Array [
+        "TestLambdaCurrentVersion6F92F24Cd305bd65eddb513d933bd6924b16f128",
+        "TestLambda2F70C45E",
+        "TestLambdaServiceRoleC28C2D9C",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:CreateAlias",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:aws:lambda:",
+                    Object {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    Object {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":function:",
+                    Object {
+                      "Ref": "TestLambda2F70C45E",
+                    },
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "TestLambdaAliasRetentionMyHandlerServiceRoleDefaultPolicy275901A8",
+        "Roles": Array [
+          Object {
+            "Ref": "TestLambdaAliasRetentionMyHandlerServiceRole70BC6D31",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "TestLambdaCurrentVersion6F92F24Cd305bd65eddb513d933bd6924b16f128": Object {
+      "DeletionPolicy": "Retain",
+      "Properties": Object {
+        "FunctionName": Object {
+          "Ref": "TestLambda2F70C45E",
+        },
+      },
+      "Type": "AWS::Lambda::Version",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "TestLambdaServiceRoleC28C2D9C": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;

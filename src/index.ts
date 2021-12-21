@@ -1,21 +1,17 @@
 import * as path from 'path';
-import * as util from 'util';
-import {
-  Stack, CustomResource,
-  aws_iam as iam,
-  aws_lambda as lambda,
-  aws_logs as logs,
-  custom_resources as cr,
-} from 'aws-cdk-lib';
-import { Construct } from 'constructs';
+import * as iam from '@aws-cdk/aws-iam';
+import * as lambda from '@aws-cdk/aws-lambda';
+import * as logs from '@aws-cdk/aws-logs';
+import * as cdk from '@aws-cdk/core';
+import * as cr from '@aws-cdk/custom-resources';
 
 export interface LambdaAliasRetentionProps {
   fn: lambda.Function;
   lambdaAlias: string;
 }
 
-export class LambdaAliasRetention extends Construct {
-  constructor(scope: Construct, id: string, props: LambdaAliasRetentionProps) {
+export class LambdaAliasRetention extends cdk.Construct {
+  constructor(scope: cdk.Construct, id: string, props: LambdaAliasRetentionProps) {
     super(scope, id);
 
     const onEvent = new lambda.Function(this, 'MyHandler', {
@@ -31,13 +27,13 @@ export class LambdaAliasRetention extends Construct {
 
     onEvent.addToRolePolicy(new iam.PolicyStatement({
       actions: ['lambda:CreateAlias'],
-      resources: [`arn:aws:lambda:${Stack.of(this).region}:${Stack.of(this).account}:function:${props.fn.functionName}`],
+      resources: [`arn:aws:lambda:${cdk.Stack.of(this).region}:${cdk.Stack.of(this).account}:function:${props.fn.functionName}`],
     }));
 
-    const outputs = new CustomResource(this, 'LambdaAlias', {
+    const outputs = new cdk.CustomResource(this, 'LambdaAlias', {
       serviceToken: myProvider.serviceToken,
       properties: {
-        regionName: Stack.of(this).region,
+        regionName: cdk.Stack.of(this).region,
         functionName: props.fn.functionName,
         version: props.fn.currentVersion.version,
         alias: props.lambdaAlias,

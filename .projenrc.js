@@ -10,7 +10,7 @@ const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Chris Yang',
   authorAddress: 'kimisme9386@gmail.com',
-  cdkVersion: '2.1.0',
+  cdkVersion: '1.136.0',
   majorVersion: 2,
   defaultReleaseBranch: 'main',
   releaseBranches: {
@@ -19,6 +19,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
   workflowNodeVersion: '14.17.0',
   name: 'cdk-lambda-alias-retention',
   repositoryUrl: 'https://github.com/kimisme9386/cdk-lambda-alias-retention.git',
+  cdkDependencies: [
+    '@aws-cdk/core',
+    '@aws-cdk/aws-iam',
+    '@aws-cdk/aws-lambda',
+    '@aws-cdk/aws-logs',
+    '@aws-cdk/custom-resources',
+  ],
   keywords: [
     'lambda',
     'alias',
