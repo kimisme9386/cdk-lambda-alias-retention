@@ -47,6 +47,8 @@ npm install cdk-lambda-alias-retention@^2.0.0
 npm install cdk-lambda-alias-retention@cdkv1 
 or
 npm install cdk-lambda-alias-retention@^1.0.0
+```
+
 
 ## Usage 
 
