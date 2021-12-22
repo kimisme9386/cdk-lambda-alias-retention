@@ -2,6 +2,17 @@
 [![PyPI version](https://badge.fury.io/py/cdk-lambda-alias-retention.svg)](https://badge.fury.io/py/cdk-lambda-alias-retention)
 [![Release](https://github.com/kimisme9386/cdk-lambda-alias-retention/actions/workflows/release.yml/badge.svg)](https://github.com/kimisme9386/cdk-lambda-alias-retention/actions/workflows/release.yml)
 
+# :warning: Deprecated
+
+It can use official CDK Code to achieve it as below:
+
+
+```ts
+const lambdaAlias = fn.currentVersion.addAlias(allLambdaWithAlias[functionConfig.name]);
+lambdaAlias.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
+```
+
+
 # cdk-lambda-alias-retention
 
 Create lambda alias and retain it forever.
