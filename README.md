@@ -8,7 +8,7 @@ It can use official CDK Code to achieve it as below:
 
 
 ```ts
-const lambdaAlias = fn.currentVersion.addAlias(allLambdaWithAlias[functionConfig.name]);
+const lambdaAlias = fn.currentVersion.addAlias('v1');
 lambdaAlias.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
 ```
 
